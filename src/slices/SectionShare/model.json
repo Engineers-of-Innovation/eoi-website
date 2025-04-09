@@ -1,0 +1,74 @@
+{
+  "id": "section_share",
+  "type": "SharedSlice",
+  "name": "SectionShare",
+  "description": "SectionShare",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "category_title": {
+          "type": "Text",
+          "config": {
+            "label": "Category title",
+            "placeholder": ""
+          }
+        },
+        "category_image": {
+          "type": "Image",
+          "config": {
+            "label": "Category image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "cta_title": {
+          "type": "Text",
+          "config": {
+            "label": "CTA title",
+            "placeholder": ""
+          }
+        },
+        "cta_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "CTA description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item,preformatted"
+          }
+        },
+        "cta_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "CTA button link",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        },
+        "cta_button_title": {
+          "type": "Text",
+          "config": {
+            "label": "CTA button title",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

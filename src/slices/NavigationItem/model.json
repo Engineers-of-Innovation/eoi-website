@@ -1,0 +1,50 @@
+{
+  "id": "navigation",
+  "type": "SharedSlice",
+  "name": "NavigationItem",
+  "description": "Navigation",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      },
+      "items": {
+        "child_title": {
+          "type": "Text",
+          "config": {
+            "label": "Child title",
+            "placeholder": ""
+          }
+        },
+        "child_link": {
+          "type": "Link",
+          "config": {
+            "label": "Child link",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

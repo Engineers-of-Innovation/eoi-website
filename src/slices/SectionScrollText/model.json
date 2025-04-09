@@ -1,0 +1,33 @@
+{
+  "id": "section_scroll_text",
+  "type": "SharedSlice",
+  "name": "SectionScrollText",
+  "description": "SectionScrollText",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "highlighted_title": {
+          "type": "Text",
+          "config": {
+            "label": "Highlighted title",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

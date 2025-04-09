@@ -1,0 +1,48 @@
+{
+  "id": "section_gallery",
+  "type": "SharedSlice",
+  "name": "SectionGallery",
+  "description": "SectionGallery",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "width": {
+          "type": "Select",
+          "config": {
+            "label": "Width",
+            "placeholder": "",
+            "options": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "default_value": "large"
+          }
+        }
+      }
+    }
+  ]
+}

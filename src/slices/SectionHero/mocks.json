@@ -1,0 +1,66 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Inventing Tomorrow, Racing Today"
+			},
+			"cta": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Let's go!"
+			},
+			"video": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ImageLink",
+					"id": "zhFBDjczpl4",
+					"name": "a couple of people walking on a beach next to a surfboard",
+					"kind": "image",
+					"url": "https://images.unsplash.com/photo-1696446701657-0db3da722b13?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MXwxfHNlYXJjaHwxfHxmcnVpdHxlbnwwfHx8fDE3MDY4MjE5NzV8MA&ixlib=rb-4.0.3&q=85",
+					"size": "0",
+					"height": "7898",
+					"width": "5268"
+				}
+			},
+			"poster": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
+					"width": 3024,
+					"height": 3778
+				},
+				"url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
+				"width": 3024,
+				"height": 3778,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Do dolore ea tempor."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

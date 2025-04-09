@@ -1,0 +1,52 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"start_date": {
+				"__TYPE__": "FieldContent",
+				"type": "Date",
+				"value": "2021-10-02"
+			},
+			"end_date": {
+				"__TYPE__": "FieldContent",
+				"type": "Date",
+				"value": "2020-01-01"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Irure culpa qui est cupidatat."
+						}
+					}
+				]
+			},
+			"visible": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "NK Akkrum"
+			},
+			"location": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Akkrum, The Netherlands",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
