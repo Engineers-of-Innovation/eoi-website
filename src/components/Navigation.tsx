@@ -135,7 +135,9 @@ export const Navigation = ({ navigation }: NavigationProps) => {
                   <PrismicLink
                     field={slice.primary.link}
                     className="text-[18px] text-[inherit] desktop-s:text-heading-2-xl"
-                    onClick={(event) => handleClick(event, slice.primary.link)}
+                    onClick={(event: MouseEvent) =>
+                      handleClick(event, slice.primary.link)
+                    }
                   >
                     <span>{slice.primary.title}</span>
                   </PrismicLink>
@@ -160,7 +162,7 @@ export const Navigation = ({ navigation }: NavigationProps) => {
                             <li key={JSON.stringify(item)}>
                               <PrismicLink
                                 field={item.child_link}
-                                onClick={(event) =>
+                                onClick={(event: MouseEvent) =>
                                   handleClick(event, item.child_link)
                                 }
                                 className="text-[18px] text-[inherit] w-full"
@@ -187,7 +189,9 @@ export const Navigation = ({ navigation }: NavigationProps) => {
                     <PrismicLink
                       field={button.link}
                       className="text-[18px] text-[inherit] desktop-s:text-heading-2-xl"
-                      onClick={(event) => handleClick(event, button.link)}
+                      onClick={(event: MouseEvent) =>
+                        handleClick(event, button.link)
+                      }
                     >
                       <span>{button.title}</span>
                     </PrismicLink>
