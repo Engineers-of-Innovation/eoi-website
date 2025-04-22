@@ -46,7 +46,7 @@ const SectionAbout = ({ slice }: SectionAboutProps) => {
           <PrismicNextImage
             fallbackAlt=""
             field={slice.primary.image}
-            className="h-full object-cover w-full object-left"
+            className="h-full object-cover w-full object-right"
           />
         </header>
 

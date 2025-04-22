@@ -43,13 +43,6 @@
             "select": "media"
           }
         },
-        "video_2": {
-          "type": "Embed",
-          "config": {
-            "label": "Video 2",
-            "placeholder": ""
-          }
-        },
         "poster": {
           "type": "Image",
           "config": {

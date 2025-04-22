@@ -4,7 +4,8 @@ import { IconRotate } from "@/components/atoms/Icon/Icon.types";
 import { mergeClassNames } from "@/utils/helpers/mergeClassNames";
 import useSmoothScrollStore from "@/utils/hooks/useSmoothScrollStore";
 import { useGSAP } from "@gsap/react";
-import type { Content } from "@prismicio/client";
+import { isFilled, type Content } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
 import gsap, { ScrollTrigger, SplitText } from "gsap/all";
 import { useRef } from "react";
@@ -66,7 +67,7 @@ const SectionHero = ({ slice }: SectionHeroProps): JSX.Element => {
       );
 
       tl.fromTo(
-        ".promo-video",
+        "[data-gsap='promo-video']",
         {
           opacity: 0,
         },
@@ -105,7 +106,7 @@ const SectionHero = ({ slice }: SectionHeroProps): JSX.Element => {
   );
 
   const handleClick = contextSafe(() => {
-    smoother?.scrollTo('[data-gsap="promo-video"]', true);
+    smoother?.scrollTo('[data-gsap="promo-video"]', true, "top -40px");
   });
 
   const positionClipping = contextSafe(() => {
@@ -188,24 +189,33 @@ const SectionHero = ({ slice }: SectionHeroProps): JSX.Element => {
 
         <div
           className={mergeClassNames(
-            "[clip-path:url(#clipping)] w-full flex items-center justify-center h-auto aspect-video relative",
+            "[clip-path:url(#clipping)] w-full flex items-center justify-center h-auto aspect-video relative opacity-0",
           )}
           data-gsap="promo-video"
         >
           {/* <PrismicNextImage
             field={slice.primary.poster}
             priority
-            className="absolute left-0 top-0  h-full w-full object-cover"
+            className="absolute left-0 top-0 h-full w-full object-cover"
           /> */}
 
           <video
-            src="promo.mp4"
             className="object-cover promo-video h-dvh w-dvw overflow-visible"
             autoPlay
             muted
+            poster={
+              isFilled.image(slice.primary.poster)
+                ? slice.primary.poster.url
+                : undefined
+            }
             disablePictureInPicture
             loop
-          />
+          >
+            {isFilled.linkToMedia(slice.primary.video) && (
+              <source src={slice.primary.video.url} type="video/mp4" />
+            )}
+            {/* <source src="promo.mp4" type="video/mp4" /> */}
+          </video>
         </div>
       </div>
     </section>

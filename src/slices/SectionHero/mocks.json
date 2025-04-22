@@ -14,6 +14,7 @@
 				"value": "Let's go!"
 			},
 			"video": {
+				"key": "54a36b47-1c06-4a85-9a00-396f13499f7f",
 				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ImageLink",

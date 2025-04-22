@@ -1050,16 +1050,6 @@ export interface SectionHeroSliceDefaultPrimary {
   video: prismic.LinkToMediaField<prismic.FieldState, never>;
 
   /**
-   * Video 2 field in *SectionHero → Default → Primary*
-   *
-   * - **Field Type**: Embed
-   * - **Placeholder**: *None*
-   * - **API ID Path**: section_hero.default.primary.video_2
-   * - **Documentation**: https://prismic.io/docs/field#embed
-   */
-  video_2: prismic.EmbedField;
-
-  /**
    * Poster field in *SectionHero → Default → Primary*
    *
    * - **Field Type**: Image

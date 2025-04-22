@@ -70,10 +70,10 @@ const EventItem = ({ slice }: EventItemProps): JSX.Element => {
         <span className="text-off-white-500 text-heading-m text-right tablet-s:text-left tablet-s:w-full">
           {formatDate(slice.primary.start_date, slice.primary.end_date)}
         </span>
-        <Button variant="primary" size="l" className="tablet-s:w-full">
+        {/* <Button variant="primary" size="l" className="tablet-s:w-full">
           <span className="tablet-s:inline hidden">Read more</span>
           <Icon name="arrow" size={IconSize.Small} />
-        </Button>
+        </Button> */}
       </div>
     </article>
   );
