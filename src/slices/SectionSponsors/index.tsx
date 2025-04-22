@@ -26,7 +26,7 @@ const CustomerLogos = ({ slice }: CustomerLogosProps) => {
           <h2 className="text-heading-4-xl font-heading text-lake-lime-900">
             {slice.primary.title}
           </h2>
-          <div className="text-body-l text-lake-lime-300 font-body max-w-[920px] text-pretty leading-relaxed mx-auto">
+          <div className="text-body-l text-lake-lime-300 font-body max-w-[920px] tablet-l:max-w-[680px] text-pretty leading-relaxed mx-auto">
             <PrismicRichText field={slice.primary.description} />
           </div>
         </header>
@@ -45,9 +45,9 @@ const CustomerLogos = ({ slice }: CustomerLogosProps) => {
                         <PrismicNextImage
                           className={mergeClassNames(
                             "mix-blend-multiply w-auto",
-                            item.tier === "1" && "h-[144px]",
-                            item.tier === "2" && "h-[120px]",
-                            item.tier === "3" && "h-20",
+                            item.tier === "1" && "h-[144px] tablet-m:h-[120px]",
+                            item.tier === "2" && "h-[120px] tablet-m:h-[100px]",
+                            item.tier === "3" && "h-20 tablet-m:h-16",
                           )}
                           field={item.image}
                           height={26}

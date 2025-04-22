@@ -94,7 +94,7 @@ const SectionShare = ({ slice }: SectionShareProps): JSX.Element => {
                 fallbackAlt=""
                 key={`img-${index}`}
                 data-gsap={`image-${index}`}
-                className="object-cover w-full h-full image"
+                className="object-cover w-full h-full"
               />
             </div>
           ))}
@@ -161,7 +161,7 @@ const SectionShare = ({ slice }: SectionShareProps): JSX.Element => {
             </ul>
           </div>
 
-          <article className="flex flex-col gap-2 max-w-[80%] text-left tablet-l:max-w-[604px] tablet-l:mx-auto">
+          <article className="flex flex-col gap-2 max-w-[80%] text-left desktop-s:max-w-[604px] tablet-l:mx-auto">
             <h3 className="text-heading-xl text-lake-lime-900 font-title">
               {slice.items[index].cta_title}
             </h3>

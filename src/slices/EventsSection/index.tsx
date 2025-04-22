@@ -21,7 +21,7 @@ const EventsSection = async ({
   const { data } = await client.getByUID("events", "races");
 
   return (
-    <section className="px-8 py-20 max-w-7xl mx-auto tablet-m:px-4" id="events">
+    <section className="px-8 pb-20 max-w-7xl mx-auto tablet-m:px-4" id="events">
       <article
         className="
         bg-lake-lime-500 text-off-white-500 rounded-[60px]

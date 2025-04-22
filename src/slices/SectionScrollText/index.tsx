@@ -62,7 +62,7 @@ const SectionScrollText = ({ slice }: SectionScrollTextProps) => {
   return (
     <section
       ref={sectionRef}
-      className="pb-20 pt-40 tablet-s:py-10 text-lake-lime-500 flex items-center justify-center w-full px-20"
+      className="py-40 text-lake-lime-500 flex items-center justify-center w-full px-20 tablet-l:px-8 tablet-s:py-20"
     >
       <div className="flex items-center justify-center max-w-5xl mx-auto">
         <div className="text-heading-3-xl tablet-s:text-heading-xl leading-relaxed">
