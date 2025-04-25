@@ -1,0 +1,47 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Let's make waves together!"
+			},
+			"description": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "We can't wait to hear from you"
+			},
+			"image": {
+				"__TYPE__": "ImageContent",
+				"provider": "imgix",
+				"url": "https://images.unsplash.com/photo-1532635241-17e820acc59f?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMnx8cGVvcGxlfGVufDB8fHx8MTc0NTYxNjc4Mnww&ixlib=rb-4.0.3&q=85",
+				"alt": "four women holding drinks while laughing together during daytime",
+				"origin": {
+					"id": "nYgy58eb9aw",
+					"url": "https://images.unsplash.com/photo-1532635241-17e820acc59f?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMnx8cGVvcGxlfGVufDB8fHx8MTc0NTYxNjc4Mnww&ixlib=rb-4.0.3&q=85",
+					"width": 3036,
+					"height": 2162
+				},
+				"width": 3036,
+				"height": 2162,
+				"edit": {
+					"background": "transparent",
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					}
+				},
+				"thumbnails": {}
+			},
+			"eyebrow": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Contact us"
+			}
+		},
+		"items": []
+	}
+]

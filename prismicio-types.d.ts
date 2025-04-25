@@ -69,6 +69,74 @@ export type BlogpostDocument<Lang extends string = string> =
     Lang
   >;
 
+type ContactDocumentDataSlicesSlice =
+  | SectionGallerySlice
+  | SinglePageHeaderSlice
+  | CtaSectionSlice;
+
+/**
+ * Content for Contact documents
+ */
+interface ContactDocumentData {
+  /**
+   * Slice Zone field in *Contact*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ContactDocumentDataSlicesSlice> /**
+   * Meta Title field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: contact.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: contact.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Contact*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Contact document from Prismic
+ *
+ * - **API ID**: `contact`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContactDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ContactDocumentData>,
+    "contact",
+    Lang
+  >;
+
 type EventsDocumentDataSlicesSlice = EventItemSlice;
 
 /**
@@ -358,6 +426,7 @@ export type NavigationDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | BlogpostDocument
+  | ContactDocument
   | EventsDocument
   | FooterDocument
   | HomeDocument
@@ -1261,6 +1330,81 @@ export type SectionShareSlice = prismic.SharedSlice<
   SectionShareSliceVariation
 >;
 
+/**
+ * Primary content in *SinglePageHeader → Default → Primary*
+ */
+export interface SinglePageHeaderSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *SinglePageHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_page_header.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Title field in *SinglePageHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_page_header.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *SinglePageHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_page_header.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Image field in *SinglePageHeader → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_page_header.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for SinglePageHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SinglePageHeaderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SinglePageHeaderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SinglePageHeader*
+ */
+type SinglePageHeaderSliceVariation = SinglePageHeaderSliceDefault;
+
+/**
+ * SinglePageHeader Shared Slice
+ *
+ * - **API ID**: `single_page_header`
+ * - **Description**: SinglePageHeader
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SinglePageHeaderSlice = prismic.SharedSlice<
+  "single_page_header",
+  SinglePageHeaderSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1285,6 +1429,9 @@ declare module "@prismicio/client" {
       BlogpostDocument,
       BlogpostDocumentData,
       BlogpostDocumentDataSlicesSlice,
+      ContactDocument,
+      ContactDocumentData,
+      ContactDocumentDataSlicesSlice,
       EventsDocument,
       EventsDocumentData,
       EventsDocumentDataSlicesSlice,
@@ -1343,6 +1490,10 @@ declare module "@prismicio/client" {
       SectionShareSliceDefaultItem,
       SectionShareSliceVariation,
       SectionShareSliceDefault,
+      SinglePageHeaderSlice,
+      SinglePageHeaderSliceDefaultPrimary,
+      SinglePageHeaderSliceVariation,
+      SinglePageHeaderSliceDefault,
     };
   }
 }

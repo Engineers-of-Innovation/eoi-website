@@ -14,21 +14,27 @@ import { usePathname } from "next/navigation";
 
 interface NavigationProps {
   navigation: NavigationDocument;
+  startInverted?: boolean;
 }
 
-export const Navigation = ({ navigation }: NavigationProps) => {
+export const Navigation = ({
+  navigation,
+  startInverted = false,
+}: NavigationProps) => {
   const navRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const pathname = usePathname();
   const { smoother } = useSmoothScrollStore();
 
   useGSAP(() => {
-    gsap.to(navRef, {
+    gsap.to(navRef.current, {
       scrollTrigger: {
         trigger: navRef.current,
         scrub: true,
         start: "24px top",
-        toggleClass: "bg-off-white-600/75",
+        onEnter: () => setHasScrolled(true),
+        onLeave: () => setHasScrolled(false),
         end: "9999999px bottom",
         markers: false,
         invalidateOnRefresh: true,
@@ -70,6 +76,8 @@ export const Navigation = ({ navigation }: NavigationProps) => {
           ref={navRef}
           className={mergeClassNames(
             "transition-colors duration-500 backdrop-blur-lg rounded-3xl flex items-center justify-between h-full w-full max-w-7xl px-4",
+            hasScrolled && !isOpen && "bg-off-white-600/75",
+            startInverted && !hasScrolled && "text-off-white-500",
             isOpen
               ? "desktop-s:bg-lake-lime-600 desktop-s:text-off-white-500"
               : "desktop-s:bg-off-white-600/75",

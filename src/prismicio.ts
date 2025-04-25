@@ -11,6 +11,7 @@ export const repositoryName = sm.repositoryName;
 // TODO: Update with your route resolvers.
 const routes: Route[] = [
   { type: "home", path: "/" },
+  { type: 'contact', path: "/contact" },
   // { type: "page", path: "/:uid" },
   // { type: "blog_post", path: "/blog/:uid" },
 ];

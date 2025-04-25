@@ -13,4 +13,5 @@ export const components = {
   section_hero: dynamic(() => import("./SectionHero")),
   section_scroll_text: dynamic(() => import("./SectionScrollText")),
   section_share: dynamic(() => import("./SectionShare")),
+  single_page_header: dynamic(() => import("./SinglePageHeader")),
 };
