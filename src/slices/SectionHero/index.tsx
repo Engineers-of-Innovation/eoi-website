@@ -5,18 +5,19 @@ import { mergeClassNames } from "@/utils/helpers/mergeClassNames";
 import useSmoothScrollStore from "@/utils/hooks/useSmoothScrollStore";
 import { useGSAP } from "@gsap/react";
 import { isFilled, type Content } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
 import gsap, { ScrollTrigger, SplitText } from "gsap/all";
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 export type SectionHeroProps = SliceComponentProps<Content.SectionHeroSlice>;
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
-
-const SectionHero = ({ slice }: SectionHeroProps): JSX.Element => {
+const SectionHero = ({ slice }: SectionHeroProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { smoother } = useSmoothScrollStore();
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(SplitText, ScrollTrigger);
+  }, []);
 
   const { contextSafe } = useGSAP(
     () => {
@@ -80,7 +81,7 @@ const SectionHero = ({ slice }: SectionHeroProps): JSX.Element => {
 
       gsap.to(`#hero-mask`, {
         scale: 30,
-        transformOrigin: "50% 50%",
+        transformOrigin: "50% 0%",
         transformBox: "fill-box",
         scrollTrigger: {
           trigger: sectionRef.current,
