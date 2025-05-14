@@ -1,15 +1,29 @@
 import { mergeClassNames } from "@/utils/helpers/mergeClassNames";
 import { Content } from "@prismicio/client";
 import { PrismicImage, SliceComponentProps } from "@prismicio/react";
+import { useMemo } from "react";
 
 export type SinglePageHeaderProps =
   SliceComponentProps<Content.SinglePageHeaderSlice>;
 
 const SinglePageHeader = ({ slice }: SinglePageHeaderProps) => {
+  const colorForTag = useMemo(() => {
+    switch (slice.primary.tag_color) {
+      case "Bleek Lime":
+        return "bg-bleek-lime-500";
+      case "EHBOrange":
+        return "bg-ehbo-orange-500";
+      case "Tidal Turqoise":
+        return "bg-tidal-turquoise-500";
+      default:
+        return "bg-lake-lime-500";
+    }
+  }, [slice.primary.tag_color]);
+
   return (
     <section
       className={mergeClassNames(
-        "w-full h-[672px] bg-lake-lime-500 pl-32 pt-24 flex items-center justify-between relative rounded-b-[60px]",
+        "w-full max-w-[1440px] mx-auto h-[672px] bg-lake-lime-500 pl-32 pt-24 flex items-center justify-between relative rounded-b-[60px]",
         "desktop-s:pl-10 desktop-s:h-auto",
         "tablet-l:px-4 tablet-l:flex-col",
       )}
@@ -21,8 +35,13 @@ const SinglePageHeader = ({ slice }: SinglePageHeaderProps) => {
         <h1 className="text-heading-4-xl text-off-white-500 font-heading">
           {slice.primary.title}
         </h1>
-        <p className="text-heading-l font-heading text-lake-lime-500 bg-bleek-lime-500 px-4 leading-none inline-flex w-max py-3 rounded-full rounded-bl-none">
-          {slice.primary.description}
+        <p
+          className={mergeClassNames(
+            "text-heading-l font-heading text-lake-lime-500 px-4 leading-none inline-flex w-max py-3 rounded-full rounded-bl-none",
+            colorForTag,
+          )}
+        >
+          {slice.primary.tag}
         </p>
       </header>
 
@@ -63,9 +82,11 @@ const SinglePageHeader = ({ slice }: SinglePageHeaderProps) => {
           className={mergeClassNames(
             "[clip-path:url(#clipping)] w-auto flex items-center justify-center h-full relative",
           )}
-          data-gsap="promo-video"
         >
-          <PrismicImage field={slice.primary.image} className=" object-cover" />
+          <PrismicImage
+            field={slice.primary.image}
+            className=" object-cover min-h-[400px]"
+          />
         </div>
       </aside>
     </section>

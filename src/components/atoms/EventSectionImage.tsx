@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ImageField } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/all";
 
 interface EventSectionImageProps {
@@ -13,9 +13,11 @@ interface EventSectionImageProps {
 export function EventSectionImage({ image }: EventSectionImageProps) {
   const parallaxRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
+  useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+  }, []);
 
+  useGSAP(() => {
     gsap.set(parallaxRef.current, { yPercent: 10 });
     gsap.to(parallaxRef.current, {
       yPercent: -10,
@@ -32,7 +34,7 @@ export function EventSectionImage({ image }: EventSectionImageProps) {
 
   return (
     <div
-      className="relative w-full h-[660px] justify-center flex items-center"
+      className="relative w-full h-[560px] tablet-s:h-[660px] justify-center flex items-center"
       ref={parallaxRef}
     >
       <PrismicNextImage

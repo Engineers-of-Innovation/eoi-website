@@ -22,7 +22,7 @@ html {
 
 button,
 a {
-  @apply text-lake-lime-900 font-heading text-body-m font-medium;
+  @apply text-lake-lime-900 font-heading font-medium;
 }
 
 h1,

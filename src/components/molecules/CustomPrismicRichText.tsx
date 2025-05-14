@@ -1,4 +1,7 @@
 import { PrismicRichText, PrismicRichTextProps } from "@prismicio/react";
+import Icon from "../atoms/Icon/Icon";
+import { PrismicNextLink } from "@prismicio/next";
+import { IconRotate } from "../atoms/Icon/Icon.types";
 
 interface CustomPrismicRichTextProps extends PrismicRichTextProps {
   overrideComponents?: PrismicRichTextProps["components"];
@@ -22,9 +25,18 @@ const CustomPrismicRichText = ({
       <h4 className="text-heading-base font-title font-semibold">{children}</h4>
     ),
     paragraph: ({ children }) => (
-      <p className="text-body-m font-body leading-normal mb-4">{children}</p>
+      <p className="text-body-m font-body mb-4 leading-relaxed">{children}</p>
     ),
     strong: ({ children }) => <span className="font-semibold">{children}</span>,
+    hyperlink: ({ children, node }) => (
+      <PrismicNextLink
+        field={node.data}
+        className="text-lake-lime-500 font-body font-medium underline underline-offset-2 decoration-1 decoration-lake-lime-500 inline-flex items-baseline gap-1 hover:text-lake-lime-400"
+      >
+        {children}
+        <Icon name="arrow" direction={IconRotate.South} />
+      </PrismicNextLink>
+    ),
     ...overrideComponents,
   };
 

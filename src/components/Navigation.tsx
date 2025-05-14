@@ -186,7 +186,6 @@ export const Navigation = ({
                 </li>
               );
             })}
-
             {navigation.data.buttons.map(
               (button) =>
                 isFilled.link(button.link) && (

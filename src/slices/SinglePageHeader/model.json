@@ -26,10 +26,10 @@
             "placeholder": ""
           }
         },
-        "description": {
+        "tag": {
           "type": "Text",
           "config": {
-            "label": "Description",
+            "label": "Tag",
             "placeholder": ""
           }
         },
@@ -39,6 +39,19 @@
             "label": "Image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "tag_color": {
+          "type": "Select",
+          "config": {
+            "label": "Tag color",
+            "placeholder": "",
+            "options": [
+              "Bleek Lime",
+              "Tidal Turqoise",
+              "EHBOrange"
+            ],
+            "default_value": "Bleek Lime"
           }
         }
       },

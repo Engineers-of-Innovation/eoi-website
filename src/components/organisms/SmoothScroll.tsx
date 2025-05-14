@@ -18,7 +18,8 @@ const SmoothScroll = ({ children, vars }: ISmoothScrollProps) => {
 
     const local = ScrollSmoother.create({
       // how long (in seconds) it takes to "catch up" to the native scroll position
-      smooth: 1,
+      smooth: 0.8,
+      speed: 0.9,
       // looks for data-speed and data-lag attributes on elements
       effects: true,
       // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)

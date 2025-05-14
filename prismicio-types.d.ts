@@ -70,6 +70,7 @@ export type BlogpostDocument<Lang extends string = string> =
   >;
 
 type ContactDocumentDataSlicesSlice =
+  | ContactFormSlice
   | SectionGallerySlice
   | SinglePageHeaderSlice
   | CtaSectionSlice;
@@ -315,6 +316,74 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
+type JoinUsDocumentDataSlicesSlice =
+  | SignUpFormSlice
+  | SectionGallerySlice
+  | SinglePageHeaderSlice;
+
+/**
+ * Content for Join us documents
+ */
+interface JoinUsDocumentData {
+  /**
+   * Slice Zone field in *Join us*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: join_us.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<JoinUsDocumentDataSlicesSlice> /**
+   * Meta Title field in *Join us*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: join_us.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Join us*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: join_us.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Join us*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: join_us.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Join us document from Prismic
+ *
+ * - **API ID**: `join_us`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type JoinUsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<JoinUsDocumentData>,
+    "join_us",
+    Lang
+  >;
+
 /**
  * Item in *Navigation → Buttons*
  */
@@ -430,7 +499,90 @@ export type AllDocumentTypes =
   | EventsDocument
   | FooterDocument
   | HomeDocument
+  | JoinUsDocument
   | NavigationDocument;
+
+/**
+ * Item in *ContactForm → Default → Primary → Sidebar content*
+ */
+export interface ContactFormSliceDefaultPrimarySidebarItem {
+  /**
+   * Title field in *ContactForm → Default → Primary → Sidebar content*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.sidebar[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *ContactForm → Default → Primary → Sidebar content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.sidebar[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ContactForm → Default → Primary*
+ */
+export interface ContactFormSliceDefaultPrimary {
+  /**
+   * Description field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Sidebar content field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.sidebar[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  sidebar: prismic.GroupField<
+    Simplify<ContactFormSliceDefaultPrimarySidebarItem>
+  >;
+}
+
+/**
+ * Default variation for ContactForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactFormSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactForm*
+ */
+type ContactFormSliceVariation = ContactFormSliceDefault;
+
+/**
+ * ContactForm Shared Slice
+ *
+ * - **API ID**: `contact_form`
+ * - **Description**: ContactForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSlice = prismic.SharedSlice<
+  "contact_form",
+  ContactFormSliceVariation
+>;
 
 /**
  * Primary content in *CtaSection → Default → Primary*
@@ -1331,6 +1483,61 @@ export type SectionShareSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *SignUpForm → Default → Primary*
+ */
+export interface SignUpFormSliceDefaultPrimary {
+  /**
+   * Description field in *SignUpForm → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: sign_up_form.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Terms and conditions field in *SignUpForm → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: sign_up_form.default.primary.terms_and_conditions
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  terms_and_conditions: prismic.RichTextField;
+}
+
+/**
+ * Default variation for SignUpForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SignUpFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SignUpFormSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SignUpForm*
+ */
+type SignUpFormSliceVariation = SignUpFormSliceDefault;
+
+/**
+ * SignUpForm Shared Slice
+ *
+ * - **API ID**: `sign_up_form`
+ * - **Description**: SignUpForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SignUpFormSlice = prismic.SharedSlice<
+  "sign_up_form",
+  SignUpFormSliceVariation
+>;
+
+/**
  * Primary content in *SinglePageHeader → Default → Primary*
  */
 export interface SinglePageHeaderSliceDefaultPrimary {
@@ -1355,14 +1562,14 @@ export interface SinglePageHeaderSliceDefaultPrimary {
   title: prismic.KeyTextField;
 
   /**
-   * Description field in *SinglePageHeader → Default → Primary*
+   * Tag field in *SinglePageHeader → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: single_page_header.default.primary.description
+   * - **API ID Path**: single_page_header.default.primary.tag
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  description: prismic.KeyTextField;
+  tag: prismic.KeyTextField;
 
   /**
    * Image field in *SinglePageHeader → Default → Primary*
@@ -1373,6 +1580,20 @@ export interface SinglePageHeaderSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Tag color field in *SinglePageHeader → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Bleek Lime
+   * - **API ID Path**: single_page_header.default.primary.tag_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  tag_color: prismic.SelectField<
+    "Bleek Lime" | "Tidal Turqoise" | "EHBOrange",
+    "filled"
+  >;
 }
 
 /**
@@ -1441,11 +1662,19 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      JoinUsDocument,
+      JoinUsDocumentData,
+      JoinUsDocumentDataSlicesSlice,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataButtonsItem,
       NavigationDocumentDataSlicesSlice,
       AllDocumentTypes,
+      ContactFormSlice,
+      ContactFormSliceDefaultPrimarySidebarItem,
+      ContactFormSliceDefaultPrimary,
+      ContactFormSliceVariation,
+      ContactFormSliceDefault,
       CtaSectionSlice,
       CtaSectionSliceDefaultPrimary,
       CtaSectionSliceVariation,
@@ -1490,6 +1719,10 @@ declare module "@prismicio/client" {
       SectionShareSliceDefaultItem,
       SectionShareSliceVariation,
       SectionShareSliceDefault,
+      SignUpFormSlice,
+      SignUpFormSliceDefaultPrimary,
+      SignUpFormSliceVariation,
+      SignUpFormSliceDefault,
       SinglePageHeaderSlice,
       SinglePageHeaderSliceDefaultPrimary,
       SinglePageHeaderSliceVariation,

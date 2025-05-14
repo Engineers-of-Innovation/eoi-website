@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  contact_form: dynamic(() => import("./ContactForm")),
   cta_section: dynamic(() => import("./CtaSection")),
   customer_logos: dynamic(() => import("./SectionSponsors")),
   event_item: dynamic(() => import("./EventItem")),
@@ -13,5 +14,6 @@ export const components = {
   section_hero: dynamic(() => import("./SectionHero")),
   section_scroll_text: dynamic(() => import("./SectionScrollText")),
   section_share: dynamic(() => import("./SectionShare")),
+  sign_up_form: dynamic(() => import("./SignUpForm")),
   single_page_header: dynamic(() => import("./SinglePageHeader")),
 };

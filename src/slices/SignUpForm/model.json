@@ -1,0 +1,37 @@
+{
+  "id": "sign_up_form",
+  "type": "SharedSlice",
+  "name": "SignUpForm",
+  "description": "SignUpForm",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,hyperlink"
+          }
+        },
+        "terms_and_conditions": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Terms and conditions",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,hyperlink"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

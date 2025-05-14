@@ -54,7 +54,7 @@ const EventsSection = async ({
           </div>
         </div>
 
-        <aside className="max-w-[588px] w-full h-auto relative rounded-lg overflow-hidden desktop-s:h-96 desktop-s:w-full desktop-s:max-w-none">
+        <aside className="max-w-[588px] w-full h-auto relative rounded-lg overflow-hidden desktop-s:w-full desktop-s:max-w-none">
           <EventSectionImage image={slice.primary.image} />
         </aside>
       </article>

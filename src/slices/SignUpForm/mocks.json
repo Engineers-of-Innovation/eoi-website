@@ -1,0 +1,31 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nisi et cillum dolor nostrud occaecat qui officia ad elit consequat. Magna sint sunt et nulla tempor sunt tempor aute deserunt."
+						}
+					}
+				]
+			},
+			"terms_and_conditions": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Fugiat ipsum labore sint in adipisicing cillum magna duis ut velit ut quis. Quis qui excepteur ipsum ipsum."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

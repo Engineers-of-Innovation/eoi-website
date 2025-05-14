@@ -107,7 +107,7 @@ const config: Config = {
       },
       'tidal-turquoise': {
         400: '#4AFBE5',
-        500: '#FF7B1F',
+        500: '#1DFADF',
         600: '#1AE4CB'
       },
       'off-white': {

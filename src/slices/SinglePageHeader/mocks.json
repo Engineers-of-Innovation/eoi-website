@@ -8,13 +8,7 @@
 				"type": "Text",
 				"value": "Let's make waves together!"
 			},
-			"description": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "We can't wait to hear from you"
-			},
 			"image": {
-				"__TYPE__": "ImageContent",
 				"provider": "imgix",
 				"url": "https://images.unsplash.com/photo-1532635241-17e820acc59f?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMnx8cGVvcGxlfGVufDB8fHx8MTc0NTYxNjc4Mnww&ixlib=rb-4.0.3&q=85",
 				"alt": "four women holding drinks while laughing together during daytime",
@@ -34,12 +28,24 @@
 						"y": 0
 					}
 				},
+				"credits": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
 			"eyebrow": {
 				"__TYPE__": "FieldContent",
 				"type": "Text",
 				"value": "Contact us"
+			},
+			"tag_color": {
+				"__TYPE__": "FieldContent",
+				"value": "Bleek Lime",
+				"type": "Select"
+			},
+			"tag": {
+				"__TYPE__": "FieldContent",
+				"value": "street",
+				"type": "Text"
 			}
 		},
 		"items": []
