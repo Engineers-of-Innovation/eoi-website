@@ -13,17 +13,6 @@
 				"type": "Date",
 				"value": "2020-01-01"
 			},
-			"description": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Irure culpa qui est cupidatat."
-						}
-					}
-				]
-			},
 			"visible": {
 				"__TYPE__": "BooleanContent",
 				"value": true
@@ -45,6 +34,22 @@
 						"direction": "ltr"
 					}
 				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "In enim aliquip dolore esse et dolor nisi quis consequat aliquip enim ullamco. Fugiat do et occaecat esse laborum."
+						}
+					}
+				]
+			},
+			"custom_date": {
+				"__TYPE__": "FieldContent",
+				"value": "wheel",
+				"type": "Text"
 			}
 		},
 		"items": []

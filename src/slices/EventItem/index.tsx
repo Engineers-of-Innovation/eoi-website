@@ -68,7 +68,9 @@ const EventItem = ({ slice }: EventItemProps): JSX.Element => {
 
       <div className="flex gap-4 items-center justify-end min-w-64 tablet-s:min-w-0 w-min tablet-s:w-full tablet-s:flex-col">
         <span className="text-off-white-500 text-heading-m text-right tablet-s:text-left tablet-s:w-full">
-          {formatDate(slice.primary.start_date, slice.primary.end_date)}
+          {isFilled.keyText(slice.primary.custom_date)
+            ? slice.primary.custom_date
+            : formatDate(slice.primary.start_date, slice.primary.end_date)}
         </span>
         {/* <Button variant="primary" size="l" className="tablet-s:w-full">
           <span className="tablet-s:inline hidden">Read more</span>

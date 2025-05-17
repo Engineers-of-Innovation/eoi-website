@@ -599,55 +599,25 @@ export interface CtaSectionSliceDefaultPrimary {
   title: prismic.KeyTextField;
 
   /**
-   * Primary button title field in *CtaSection → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: cta_section.default.primary.primary_button_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  primary_button_title: prismic.KeyTextField;
-
-  /**
-   * Primary button link field in *CtaSection → Default → Primary*
+   * Buttons field in *CtaSection → Default → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: cta_section.default.primary.primary_button_link
+   * - **API ID Path**: cta_section.default.primary.buttons
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  primary_button_link: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-
-  /**
-   * Secondary button title field in *CtaSection → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: cta_section.default.primary.secondary_button_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  secondary_button_title: prismic.KeyTextField;
-
-  /**
-   * Secondary button link field in *CtaSection → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: cta_section.default.primary.secondary_button_link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  secondary_button_link: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
+  buttons: prismic.Repeatable<
+    prismic.LinkField<
+      string,
+      string,
+      unknown,
+      prismic.FieldState,
+      | "primary"
+      | "secondary"
+      | "tertiary"
+      | "primary-bleek-lime"
+      | "secondary-bleek-lime"
+    >
   >;
 }
 
@@ -845,6 +815,16 @@ export interface EventItemSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   visible: prismic.BooleanField;
+
+  /**
+   * Custom date field in *EventItem → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: When the date is unknown, use this field.
+   * - **API ID Path**: event_item.default.primary.custom_date
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  custom_date: prismic.KeyTextField;
 }
 
 /**

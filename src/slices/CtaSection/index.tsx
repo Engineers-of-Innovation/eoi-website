@@ -2,8 +2,9 @@
 
 import { Button } from "@/components/atoms/Button";
 import Icon from "@/components/atoms/Icon/Icon";
+import { IconRotate } from "@/components/atoms/Icon/Icon.types";
 import { useGSAP } from "@gsap/react";
-import { Content } from "@prismicio/client";
+import { Content, isFilled } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
@@ -80,22 +81,21 @@ const CtaSection = ({ slice }: CtaSectionProps) => {
           </h2>
 
           <div className="flex gap-4 tablet-m:flex-col">
-            <Button
-              field={slice.primary.primary_button_link}
-              variant="primary-bleek-lime"
-              size="l"
-            >
-              {slice.primary.primary_button_title}
-              <Icon name="arrow" className="w-4 h-4" />
-            </Button>
-            <Button
-              field={slice.primary.secondary_button_link}
-              variant="secondary-bleek-lime"
-              size="l"
-            >
-              {slice.primary.secondary_button_title}
-              <Icon name="arrow" className="w-4 h-4" />
-            </Button>
+            {isFilled.repeatable(slice.primary.buttons) &&
+              slice.primary.buttons.map(
+                (button, index) =>
+                  isFilled.link(button) && (
+                    <Button
+                      key={index}
+                      variant={button.variant}
+                      size="l"
+                      field={button}
+                    >
+                      {button.text}
+                      <Icon name="arrow" direction={IconRotate.South} />
+                    </Button>
+                  ),
+              )}
           </div>
         </article>
       </div>

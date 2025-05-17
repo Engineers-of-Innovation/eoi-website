@@ -13,14 +13,11 @@ import { type Content } from "@prismicio/client";
 export type EventsSectionProps =
   SliceComponentProps<Content.EventsSectionSlice>;
 
-const EventsSection = async ({
-  slice,
-  context,
-}: EventsSectionProps): Promise<JSX.Element> => {
+const EventsSection = async ({ slice, context }: EventsSectionProps) => {
   const client = createClient();
-  const { data } = await client.getByUID("events", "races");
+  const { data } = await client.getByUID("events", "events");
 
-  return (
+  return data.slices.length > 0 ? (
     <section className="px-8 pb-20 max-w-7xl mx-auto tablet-m:px-4" id="events">
       <article
         className="
@@ -59,7 +56,7 @@ const EventsSection = async ({
         </aside>
       </article>
     </section>
-  );
+  ) : null;
 };
 
 export default EventsSection;

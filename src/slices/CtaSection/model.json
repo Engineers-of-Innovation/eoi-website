@@ -19,34 +19,22 @@
             "placeholder": ""
           }
         },
-        "primary_button_title": {
-          "type": "Text",
-          "config": {
-            "label": "Primary button title",
-            "placeholder": ""
-          }
-        },
-        "primary_button_link": {
+        "buttons": {
           "type": "Link",
           "config": {
-            "label": "Primary button link",
+            "label": "Buttons",
             "placeholder": "",
-            "select": null
-          }
-        },
-        "secondary_button_title": {
-          "type": "Text",
-          "config": {
-            "label": "Secondary button title",
-            "placeholder": ""
-          }
-        },
-        "secondary_button_link": {
-          "type": "Link",
-          "config": {
-            "label": "Secondary button link",
-            "placeholder": "",
-            "select": null
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true,
+            "variants": [
+              "primary",
+              "secondary",
+              "tertiary",
+              "primary-bleek-lime",
+              "secondary-bleek-lime"
+            ]
           }
         }
       },

@@ -8,29 +8,21 @@
 				"value": "eventually",
 				"type": "Text"
 			},
-			"primary_button_title": {
-				"__TYPE__": "FieldContent",
-				"value": "curve",
-				"type": "Text"
-			},
-			"primary_button_link": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "https://slicemachine.dev"
-				}
-			},
-			"secondary_button_title": {
-				"__TYPE__": "FieldContent",
-				"value": "son",
-				"type": "Text"
-			},
-			"secondary_button_link": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "https://slicemachine.dev"
-				}
+			"buttons": {
+				"__TYPE__": "RepeatableContent",
+				"type": "Link",
+				"value": [
+					{
+						"key": "18036bb2-f825-4dbe-9ec9-f6526947a295",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "ExternalLink",
+							"url": "http://twitter.com",
+							"text": "upon",
+							"variant": "tertiary"
+						}
+					}
+				]
 			}
 		},
 		"items": []
