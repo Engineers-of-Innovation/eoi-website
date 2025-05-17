@@ -30,7 +30,7 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
         <CustomPrismicRichText field={slice.primary.description} />
 
         <form
-          action="https://formkeep.com/f/e4caf886b437"
+          action="https://formspree.io/f/mvgaldpn"
           acceptCharset="UTF-8"
           encType="multipart/form-data"
           method="POST"
