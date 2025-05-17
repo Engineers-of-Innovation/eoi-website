@@ -61,8 +61,12 @@ export const Navigation = ({
       if (isHomepage) {
         smoother?.scrollTo(newUrl, isHomepage, "top-=48px top");
       }
+    }
 
-      router.push(newUrl);
+    if (field?.url) {
+      router.push(field.url, {
+        scroll: false,
+      });
     }
   };
 
