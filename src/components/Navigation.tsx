@@ -3,14 +3,14 @@ import { PrismicLink } from "@prismicio/react";
 
 // Types
 import type { NavigationDocument } from "../../prismicio-types";
-import { Button } from "./atoms/Button";
+import { Button, ButtonProps } from "./atoms/Button";
 import { useGSAP } from "@gsap/react";
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { mergeClassNames } from "@/utils/helpers/mergeClassNames";
 import useSmoothScrollStore from "@/utils/hooks/useSmoothScrollStore";
 import { isFilled, LinkField } from "@prismicio/client";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface NavigationProps {
   navigation: NavigationDocument;
@@ -26,6 +26,7 @@ export const Navigation = ({
   const [hasScrolled, setHasScrolled] = useState(false);
   const pathname = usePathname();
   const { smoother } = useSmoothScrollStore();
+  const router = useRouter();
 
   useGSAP(() => {
     gsap.to(navRef.current, {
@@ -60,6 +61,8 @@ export const Navigation = ({
       if (isHomepage) {
         smoother?.scrollTo(newUrl, isHomepage, "top-=48px top");
       }
+
+      router.push(newUrl);
     }
   };
 
@@ -255,6 +258,12 @@ export const Navigation = ({
                 field={button.link}
                 size="m"
                 key={button.title}
+                className={mergeClassNames(
+                  startInverted &&
+                    !hasScrolled &&
+                    button.variant === "tertiary" &&
+                    "!text-off-white-600 !border-off-white-600",
+                )}
                 variant={button.variant ?? "tertiary"}
               >
                 {button.title}

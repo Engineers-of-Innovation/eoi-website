@@ -1,10 +1,14 @@
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { mergeClassNames } from "@/utils/helpers/mergeClassNames";
 import CustomPrismicRichText from "@/components/molecules/CustomPrismicRichText";
 import Input from "@/components/atoms/Input/Input";
 import Checkbox from "@/components/atoms/Checkbox/Checkbox";
 import TextArea from "@/components/atoms/Textarea/Textarea";
+import { Button } from "@/components/atoms/Button";
+import { IconRotate } from "@/components/atoms/Icon/Icon.types";
+import Icon from "@/components/atoms/Icon/Icon";
+import Select from "@/components/atoms/Select/Select";
 
 export type SignUpFormProps = SliceComponentProps<Content.SignUpFormSlice>;
 
@@ -12,7 +16,7 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
   return (
     <section
       className={mergeClassNames(
-        "bg-off-white-500 flex gap-16 max-w-7xl mx-auto py-12 px-16 items-center justify-center",
+        "bg-off-white-500 flex gap-16 max-w-7xl mx-auto py-12 px-4 items-center justify-center",
         "desktop-l:gap-2",
         "desktop-s:gap-10 desktop-s:flex-col",
         "tablet-s:flex-col tablet-s:px-4",
@@ -20,18 +24,20 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
     >
       <div
         className={mergeClassNames(
-          "bg-off-white-100 rounded-[40px] border-b-[10px] border-b-lake-lime-50 px-20 py-16 max-w-[774px] w-full tablet-s:px-4",
+          "bg-off-white-100 rounded-[40px] border-b-[10px] border-b-lake-lime-50 px-20 py-16 max-w-[798px] w-full tablet-s:px-6",
         )}
       >
         <CustomPrismicRichText field={slice.primary.description} />
 
         <form
           action="https://formkeep.com/f/e4caf886b437"
-          accept-charset="UTF-8"
+          acceptCharset="UTF-8"
           encType="multipart/form-data"
           method="POST"
           className="py-10 flex flex-col gap-6"
         >
+          <h4 className="text-heading-l mb-2">Join us</h4>
+
           <div className="flex gap-4 tablet-l:flex-col">
             <Input
               id="name"
@@ -56,7 +62,6 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               id="email"
               name="email"
               required
-              className="w-full"
               placeholder="Your email address"
               label="Email address"
             />
@@ -66,8 +71,8 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
             <TextArea
               id="reason"
               required
-              className="w-full"
               name="reason"
+              isFullWidth
               placeholder="Why do you want to join us?"
               label="Why do you want to join us?"
             />
@@ -91,9 +96,9 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
             />
           </div>
 
-          <hr />
+          <hr className="h-[1px] bg-lake-lime-50 border-none my-10" />
 
-          <h4>Personal details</h4>
+          <h4 className="text-heading-l mb-2">Personal details</h4>
 
           <div className="flex gap-4">
             <Input
@@ -120,7 +125,6 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               required
               label="Street address"
               placeholder="Your street address"
-              className="w-full"
             />
           </div>
 
@@ -129,6 +133,7 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               id="zipcode"
               name="zipcode"
               required
+              isFullWidth
               label="Zipcode"
               placeholder="Your zipcode"
             />
@@ -139,13 +144,12 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               required
               label="City"
               placeholder="Enter your city"
-              className="w-full"
             />
           </div>
 
-          <hr />
+          <hr className="h-[1px] bg-lake-lime-50 border-none my-10" />
 
-          <h4>Bank details</h4>
+          <h4 className="text-heading-l mb-2">Bank details</h4>
 
           <div className="flex flex-col gap-4">
             <Input
@@ -154,7 +158,6 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               required
               label="Bank card number / IBAN"
               placeholder="Your bank card number / IBAN"
-              className="w-full"
             />
           </div>
 
@@ -169,7 +172,8 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
           </div>
 
           <div className="flex gap-4">
-            <select
+            <Select
+              label="Write-off period"
               name="write-off-period"
               id="write-off-period"
               className="w-full"
@@ -177,7 +181,7 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               <option value="anually">Anually</option>
               <option value="bi-annually">Bi-annually</option>
               <option value="quarterly">Quarterly</option>
-            </select>
+            </Select>
           </div>
 
           <div className="flex flex-col gap-4">
@@ -188,8 +192,8 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               label="I accept the terms and conditions"
             />
 
-            <div className="opacity-60 text-body-s">
-              <CustomPrismicRichText
+            <div className="opacity-60 text-body-xs mt-4">
+              <PrismicRichText
                 field={slice.primary.terms_and_conditions}
                 components={{
                   paragraph: ({ children }) => (
@@ -201,6 +205,11 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               />
             </div>
           </div>
+
+          <Button variant="primary" size="l" className="w-auto mx-auto">
+            Submit
+            <Icon name="arrow" direction={IconRotate.South} />
+          </Button>
         </form>
       </div>
     </section>

@@ -22,14 +22,14 @@ const ContactForm = ({ slice }: ContactFormProps) => {
     >
       <div
         className={mergeClassNames(
-          "bg-off-white-100 rounded-[40px] border-b-[10px] border-b-lake-lime-50 px-20 py-16 max-w-[774px] w-full",
+          "bg-off-white-100 rounded-[40px] border-b-[10px] border-b-lake-lime-50 px-20 tablet-s:px-6 py-16 max-w-[774px] w-full",
         )}
       >
         <CustomPrismicRichText field={slice.primary.description} />
 
         <form
           action="https://formkeep.com/f/5dd513f8b51f"
-          accept-charset="UTF-8"
+          acceptCharset="UTF-8"
           encType="multipart/form-data"
           method="POST"
           className="py-10 flex flex-col gap-6"

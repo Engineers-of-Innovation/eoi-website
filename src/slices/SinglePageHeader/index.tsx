@@ -24,8 +24,8 @@ const SinglePageHeader = ({ slice }: SinglePageHeaderProps) => {
     <section
       className={mergeClassNames(
         "w-full max-w-[1440px] mx-auto h-[672px] bg-lake-lime-500 pl-32 pt-24 flex items-center justify-between relative rounded-b-[60px]",
-        "desktop-s:pl-10 desktop-s:h-auto",
-        "tablet-l:px-4 tablet-l:flex-col",
+        "desktop-s:pl-10 desktop-s:h-auto desktop-s:pt-32",
+        "tablet-l:px-4 tablet-l:flex-col tablet-l:pt-40",
       )}
     >
       <header className="flex gap-4 flex-col desktop-s:pb-20">
@@ -48,6 +48,7 @@ const SinglePageHeader = ({ slice }: SinglePageHeaderProps) => {
       <aside
         className={mergeClassNames(
           "w-full h-full flex items-center justify-center relative",
+          "desktop-s:-mt-20",
           "tablet-l:hidden",
         )}
       >

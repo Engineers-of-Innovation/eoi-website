@@ -1,6 +1,7 @@
 // Icons
 
 import { Arrow } from "./icons/Arrow";
+import { Chevron } from "./icons/Chevron";
 
 
 // Types
@@ -29,4 +30,5 @@ export enum IconSize {
 
 export const iconComponents = {
   arrow: Arrow,
+  chevron: Chevron
 }

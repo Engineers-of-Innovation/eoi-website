@@ -12,6 +12,7 @@ export const repositoryName = sm.repositoryName;
 const routes: Route[] = [
   { type: "home", path: "/" },
   { type: 'contact', path: "/contact" },
+  { type: 'join_us', path: "/join-us" },
   // { type: "page", path: "/:uid" },
   // { type: "blog_post", path: "/blog/:uid" },
 ];
