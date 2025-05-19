@@ -35,6 +35,10 @@ const SectionHero = ({ slice }: SectionHeroProps) => {
         linesClass: "overflow-hidden",
       });
 
+      gsap.set(".hero-title", { opacity: 1 });
+      gsap.set('[data-gsap="description"]', { opacity: 1 });
+      gsap.set('[data-gsap="cta-button"]', { opacity: 1 });
+
       tl.from(childSplit.words, {
         duration: 1,
         yPercent: 100,
@@ -79,9 +83,12 @@ const SectionHero = ({ slice }: SectionHeroProps) => {
         ">-=0.6",
       );
 
+      const isFirefox =
+        navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
+
       gsap.to(`#hero-mask`, {
         scale: 30,
-        transformOrigin: "50% 0%",
+        transformOrigin: isFirefox ? "50% 30%" : "50% 0%",
         transformBox: "fill-box",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -134,18 +141,21 @@ const SectionHero = ({ slice }: SectionHeroProps) => {
       <div className="max-w-7xl w-full mx-auto px-4">
         <header className="flex justify-between w-full items-center gap-10 pt-20 tablet-s:flex-col tablet-s:items-start">
           <div className="flex flex-col gap-3">
-            <h1 className="hero-title text-heading-6-xl text-lake-lime-500 max-w-[800px] tablet-l:max-w-[620px] y-[100%] leading-snug">
+            <h1 className="hero-title text-heading-6-xl text-lake-lime-500 max-w-[800px] tablet-l:max-w-[620px] y-[100%] opacity-0 leading-snug">
               {slice.primary.title}
             </h1>
             <div className="text-off-white-900 font-medium font-heading leading-normal text-heading-xl max-w-[504px] overflow-hidden">
-              <div data-gsap="description" className="y-[100%] relative">
+              <div
+                data-gsap="description"
+                className="y-[100%] opacity-0 relative"
+              >
                 <PrismicRichText field={slice.primary.description} />
               </div>
             </div>
           </div>
 
           <button
-            className="group bg-bleek-lime-500 p-2 pl-6 rounded-bl-none rounded-full flex gap-2 items-center text-heading-xl text-lake-lime-500 font-medium border-b-2 border-b-bleek-lime-600 active:border-b-0"
+            className="group bg-bleek-lime-500 opacity-0 p-2 pl-6 rounded-bl-none rounded-full flex gap-2 items-center text-heading-xl text-lake-lime-500 font-medium border-b-2 border-b-bleek-lime-600 active:border-b-0"
             data-gsap="cta-button"
             onClick={() => handleClick()}
           >
@@ -162,23 +172,20 @@ const SectionHero = ({ slice }: SectionHeroProps) => {
       </div>
 
       <div
-        className="flex items-center justify-center relative mx-auto [transform-origin:50%_50%]"
+        className="flex items-center justify-center relative mx-auto [transform-origin:50%_0%] [mask-position:50%_0%]"
         data-gsap-sticky="hero"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className={mergeClassNames(
-            "mx-auto absolute w-dvw h-dvh [transform-origin:50%_50%]",
+            "mx-auto absolute w-dvw h-dvh [transform-origin:50%_0%] [mask-position:50%_0%]",
           )}
           viewBox="0 0 1600 900"
           preserveAspectRatio="none"
           fill="none"
         >
           <defs>
-            <clipPath
-              id="clipping"
-              className="hero-image [transform-origin:50%_50%]"
-            >
+            <clipPath id="clipping">
               <path
                 fill="#B9FF25"
                 id="hero-mask"
