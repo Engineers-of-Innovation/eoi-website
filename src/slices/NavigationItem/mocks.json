@@ -3,16 +3,13 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"title": {
-				"__TYPE__": "FieldContent",
-				"value": "push",
-				"type": "Text"
-			},
 			"link": {
+				"key": "adf8f606-1c56-4f2a-9723-e5d089ad7694",
 				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
-					"url": "http://google.com"
+					"url": "https://prismic.io",
+					"text": "shadow"
 				}
 			}
 		},
@@ -21,20 +18,14 @@
 				"__TYPE__": "GroupItemContent",
 				"value": [
 					[
-						"child_title",
-						{
-							"__TYPE__": "FieldContent",
-							"value": "card",
-							"type": "Text"
-						}
-					],
-					[
 						"child_link",
 						{
+							"key": "6bacb58a-5354-4c2b-8164-59a7873c7614",
 							"__TYPE__": "LinkContent",
 							"value": {
 								"__TYPE__": "ExternalLink",
-								"url": "https://slicemachine.dev"
+								"url": "https://slicemachine.dev",
+								"text": "coffee"
 							}
 						}
 					]

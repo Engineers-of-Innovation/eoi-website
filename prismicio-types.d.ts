@@ -947,16 +947,6 @@ export type EventsSectionSlice = prismic.SharedSlice<
  */
 export interface NavigationSliceDefaultPrimary {
   /**
-   * Title field in *NavigationItem → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
    * Link field in *NavigationItem → Default → Primary*
    *
    * - **Field Type**: Link
@@ -971,16 +961,6 @@ export interface NavigationSliceDefaultPrimary {
  * Primary content in *NavigationItem → Items*
  */
 export interface NavigationSliceDefaultItem {
-  /**
-   * Child title field in *NavigationItem → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.items[].child_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  child_title: prismic.KeyTextField;
-
   /**
    * Child link field in *NavigationItem → Items*
    *

@@ -1,16 +1,17 @@
 "use client";
 import { PrismicLink } from "@prismicio/react";
 
-// Types
-import type { NavigationDocument } from "../../prismicio-types";
-import { Button, ButtonProps } from "./atoms/Button";
+import { Button } from "./atoms/Button";
 import { useGSAP } from "@gsap/react";
-import { MouseEvent, useEffect, useMemo, useRef, useState } from "react";
+import { MouseEvent, useRef, useState } from "react";
 import gsap from "gsap";
 import { mergeClassNames } from "@/utils/helpers/mergeClassNames";
 import useSmoothScrollStore from "@/utils/hooks/useSmoothScrollStore";
 import { isFilled, LinkField } from "@prismicio/client";
 import { usePathname, useRouter } from "next/navigation";
+
+import type { NavigationDocument } from "../../prismicio-types";
+import { PrismicNextLink } from "@prismicio/next";
 
 interface NavigationProps {
   navigation: NavigationDocument;
@@ -59,12 +60,10 @@ export const Navigation = ({
       // window.location.href = newUrl;
 
       if (isHomepage) {
-        smoother?.scrollTo(newUrl, isHomepage, "top-=48px top");
+        return smoother?.scrollTo(newUrl, true, "top-=48px top");
       }
-    }
 
-    if (field?.url) {
-      router.push(field.url, {
+      return router.push(newUrl, {
         scroll: false,
       });
     }
@@ -142,20 +141,23 @@ export const Navigation = ({
             )}
           >
             {navigation.data.slices.map((slice) => {
+              const LinkElement = isFilled.link(slice.primary.link)
+                ? PrismicNextLink
+                : "p";
               return (
                 <li
                   className="font-heading font-medium group relative desktop-s:flex desktop-s:gap-10"
                   key={slice.id}
                 >
-                  <PrismicLink
+                  <LinkElement
                     field={slice.primary.link}
                     className="text-[18px] text-[inherit] desktop-s:text-heading-2-xl"
                     onClick={(event: MouseEvent) =>
                       handleClick(event, slice.primary.link)
                     }
                   >
-                    <span>{slice.primary.title}</span>
-                  </PrismicLink>
+                    <span>{slice.primary.link.text}</span>
+                  </LinkElement>
 
                   {/* Renders child links, if present. */}
                   {slice.items.length > 0 && (
@@ -173,17 +175,20 @@ export const Navigation = ({
                         )}
                       >
                         {slice.items.map((item) => {
+                          const LinkElement = isFilled.link(item.child_link)
+                            ? PrismicNextLink
+                            : "p";
                           return (
                             <li key={JSON.stringify(item)}>
-                              <PrismicLink
+                              <LinkElement
                                 field={item.child_link}
                                 onClick={(event: MouseEvent) =>
                                   handleClick(event, item.child_link)
                                 }
                                 className="text-[18px] text-[inherit] w-full"
                               >
-                                <span>{item.child_title}</span>
-                              </PrismicLink>
+                                <span>{item.child_link.text}</span>
+                              </LinkElement>
                             </li>
                           );
                         })}

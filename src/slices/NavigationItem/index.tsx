@@ -1,41 +1,37 @@
-import type { Content } from '@prismicio/client'
-import type { SliceComponentProps } from '@prismicio/react'
-import { PrismicLink } from '@prismicio/react'
+import { isFilled, type Content } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
+import type { SliceComponentProps } from "@prismicio/react";
 
-/**
- * Props for `Navigation`.
- */
-export type NavigationProps = SliceComponentProps<Content.NavigationSlice>
+export type NavigationProps = SliceComponentProps<Content.NavigationSlice>;
 
-/**
- * Component for "NavigationItem" Slices.
- */
-const NavigationItem = ({ slice }: NavigationProps): JSX.Element => {
+const NavigationItem = ({ slice }: NavigationProps) => {
+  const LinkElement = isFilled.link(slice.primary.link) ? PrismicNextLink : "p";
+
   return (
-    <li className={'font-heading'}>
-      <PrismicLink
+    <li className={"font-heading"}>
+      <LinkElement
         className="text-heading-6-xl text-lake-lime-900 hover:text-lake-lime-700"
         field={slice.primary.link}
       >
-        {slice.primary.title}
+        {slice.primary.link.text}
 
         {slice.items && (
           <ul>
             {slice.items.map((item, idx) => (
               <li key={idx}>
-                <PrismicLink
+                <PrismicNextLink
                   className="text-heading-6-xl text-lake-lime-900 hover:text-lake-lime-700"
                   field={item.child_link}
                 >
-                  {item.child_title}
-                </PrismicLink>
+                  {item.child_link.text}
+                </PrismicNextLink>
               </li>
             ))}
           </ul>
         )}
-      </PrismicLink>
+      </LinkElement>
     </li>
-  )
-}
+  );
+};
 
-export default NavigationItem
+export default NavigationItem;

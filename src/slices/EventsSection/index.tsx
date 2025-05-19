@@ -9,6 +9,7 @@ import EventItem from "../EventItem";
 import { EventSectionImage } from "@/components/atoms/EventSectionImage";
 
 import { type Content } from "@prismicio/client";
+import { Button } from "@/components/atoms/Button";
 
 export type EventsSectionProps =
   SliceComponentProps<Content.EventsSectionSlice>;
@@ -16,6 +17,21 @@ export type EventsSectionProps =
 const EventsSection = async ({ slice, context }: EventsSectionProps) => {
   const client = createClient();
   const { data } = await client.getByUID("events", "events");
+
+  //html encoded title
+  const mailtoTitle = encodeURIComponent(
+    `Interested in visiting one of your events`,
+  );
+  const mailtoContent = encodeURIComponent(`Hi!
+
+I'm interested in joining the event <event name> listed on the website. Could you send me some more information on how I can attend?
+
+Kind regards,
+
+<name>
+  `);
+
+  const mailtoHref = `mailto:?subject=${mailtoTitle}&body=${mailtoContent}`;
 
   return data.slices.length > 0 ? (
     <section className="px-8 pb-20 max-w-7xl mx-auto tablet-m:px-4" id="events">
@@ -43,11 +59,24 @@ const EventsSection = async ({ slice, context }: EventsSectionProps) => {
               {slice.primary.subtitle}
             </p>
             <SliceZone
-              slices={data.slices}
+              slices={data.slices.filter((slice) => slice.primary.visible)}
               components={{
                 event_item: EventItem,
               }}
             />
+
+            <Button
+              variant="primary"
+              size="l"
+              className="self-start mt-4 tablet-s:self-stretch"
+              field={{
+                url: mailtoHref,
+                target: "_blank",
+                link_type: "Web",
+              }}
+            >
+              visit one of these events
+            </Button>
           </div>
         </div>
 

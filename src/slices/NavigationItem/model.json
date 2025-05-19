@@ -12,36 +12,26 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "title": {
-          "type": "Text",
-          "config": {
-            "label": "Title",
-            "placeholder": ""
-          }
-        },
         "link": {
           "type": "Link",
           "config": {
             "label": "Link",
             "placeholder": "",
-            "select": null
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true
           }
         }
       },
       "items": {
-        "child_title": {
-          "type": "Text",
-          "config": {
-            "label": "Child title",
-            "placeholder": ""
-          }
-        },
         "child_link": {
           "type": "Link",
           "config": {
             "label": "Child link",
             "placeholder": "",
-            "select": null
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true
           }
         }
       }
