@@ -19,7 +19,8 @@ const raleway = Raleway({ subsets: ["latin"], variable: "--font-raleway" });
 
 export const metadata: Metadata = {
   title: "Engineers of Innovation",
-  description: "We are a team of engineers who build innovative products.",
+  description:
+    "We design and race a cutting-edge solar boat, driving innovation in sustainable tech.",
 };
 
 // eslint-disable-next-line react/function-component-definition
