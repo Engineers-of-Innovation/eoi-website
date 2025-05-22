@@ -21,8 +21,13 @@ export default async function JoinUsPage() {
     <>
       <Navigation navigation={navigation} startInverted />
       <SmoothScroll>
-        <SliceZone components={components} slices={page.data.slices} />
-        <Footer socials={footer.data.socials} title={footer.data.title ?? ""} />
+        <main>
+          <SliceZone components={components} slices={page.data.slices} />
+          <Footer
+            socials={footer.data.socials}
+            title={footer.data.title ?? ""}
+          />
+        </main>
       </SmoothScroll>
     </>
   );

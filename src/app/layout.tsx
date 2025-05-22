@@ -6,6 +6,7 @@ import { repositoryName } from "@/prismicio";
 
 import "./globals.css";
 import SmoothScrollStoreProvider from "@/utils/stores/SmoothScrollStore";
+import { PageTransitionProvider } from "@/components/organisms/PageTransitionProvider";
 
 // Font files can be colocated inside of `app`
 const clashDisplay = localFont({
@@ -30,10 +31,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="w-full">
       <body className={`${raleway.variable} ${clashDisplay.variable} w-full`}>
-        <SmoothScrollStoreProvider>
-          {children}
-          <PrismicPreview repositoryName={repositoryName} />
-        </SmoothScrollStoreProvider>
+        <PageTransitionProvider>
+          <SmoothScrollStoreProvider>
+            {children}
+            <PrismicPreview repositoryName={repositoryName} />
+          </SmoothScrollStoreProvider>
+        </PageTransitionProvider>
       </body>
     </html>
   );
