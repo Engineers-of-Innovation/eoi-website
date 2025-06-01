@@ -105,6 +105,7 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               id="birthdate"
               name="birthdate"
               required
+              type="date"
               label="Date of birth"
               placeholder="Your date of birth"
             />
@@ -113,6 +114,7 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               id="phone"
               name="phone"
               required
+              type="tel"
               label="Phone number"
               placeholder="Your phone number"
             />
@@ -206,7 +208,12 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
             </div>
           </div>
 
-          <Button variant="primary" size="l" className="w-auto mx-auto">
+          <Button
+            variant="primary"
+            size="l"
+            className="w-auto mx-auto"
+            type="submit"
+          >
             Submit
             <Icon name="arrow" direction={IconRotate.South} />
           </Button>
