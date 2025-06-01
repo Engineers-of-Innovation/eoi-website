@@ -41,7 +41,11 @@ const CustomerLogos = ({ slice }: CustomerLogosProps) => {
                 (item, idx) =>
                   isFilled.image(item.image) && (
                     <li key={idx}>
-                      <PrismicNextLink field={item.link}>
+                      <PrismicNextLink
+                        field={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <PrismicNextImage
                           className={mergeClassNames(
                             "mix-blend-multiply w-auto",
@@ -62,10 +66,7 @@ const CustomerLogos = ({ slice }: CustomerLogosProps) => {
           ))}
         </div>
         {isFilled.link(slice.primary.button) && (
-          <PrismicNextLink
-            className="es-customer-logos__button"
-            field={slice.primary.button}
-          >
+          <PrismicNextLink field={slice.primary.button}>
             {slice.primary.button.link_type ?? "Learn more..."}
           </PrismicNextLink>
         )}
