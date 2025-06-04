@@ -28,7 +28,7 @@ const ContactForm = ({ slice }: ContactFormProps) => {
         <CustomPrismicRichText field={slice.primary.description} />
 
         <form
-          action="https://formspree.io/f/mpwdbkab"
+          action="https://formspree.io/f/manjneyn"
           acceptCharset="UTF-8"
           encType="multipart/form-data"
           method="POST"
