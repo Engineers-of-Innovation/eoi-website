@@ -10,41 +10,10 @@ import { IconRotate } from "@/components/atoms/Icon/Icon.types";
 import Icon from "@/components/atoms/Icon/Icon";
 import Select from "@/components/atoms/Select/Select";
 import Script from "next/script";
-import { useEffect, useState } from "react";
-import Botpoison from "@botpoison/browser";
 
 export type SignUpFormProps = SliceComponentProps<Content.SignUpFormSlice>;
 
 const SignUpForm = ({ slice }: SignUpFormProps) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const botpoison = new Botpoison({
-    publicKey: "pk_0842adcf-4510-42f2-9282-0006505747ff",
-  });
-
-  useEffect(() => {
-    Botpoison.init();
-  }, []);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    setIsLoading(true);
-    e.preventDefault();
-    // 3. Process a challenge
-    const { solution } = await botpoison.challenge();
-
-    try {
-      await fetch("https://submit-form.com/jHi4TGLGi", {
-        method: "POST",
-        headers: {
-          _botpoison: solution,
-        },
-      });
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
     <section
       className={mergeClassNames(
@@ -63,8 +32,8 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
         <CustomPrismicRichText field={slice.primary.description} />
 
         <form
-          onSubmit={handleSubmit}
           acceptCharset="UTF-8"
+          action="https://submit-form.com/jHi4TGLGi"
           data-botpoison-public-key="pk_0842adcf-4510-42f2-9282-0006505747ff"
           method="POST"
           className="py-10 flex flex-col gap-6"
@@ -246,7 +215,6 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
             size="l"
             className="w-auto mx-auto"
             type="submit"
-            disabled={isLoading}
           >
             Submit
             <Icon name="arrow" direction={IconRotate.South} />
