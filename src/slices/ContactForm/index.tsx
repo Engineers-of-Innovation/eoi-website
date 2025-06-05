@@ -1,16 +1,49 @@
+"use client";
+
 import { Button } from "@/components/atoms/Button";
 import Icon from "@/components/atoms/Icon/Icon";
-import { IconRotate, IconSize } from "@/components/atoms/Icon/Icon.types";
+import { IconRotate } from "@/components/atoms/Icon/Icon.types";
 import Input from "@/components/atoms/Input/Input";
 import TextArea from "@/components/atoms/Textarea/Textarea";
 import CustomPrismicRichText from "@/components/molecules/CustomPrismicRichText";
 import { mergeClassNames } from "@/utils/helpers/mergeClassNames";
+import Botpoison from "@botpoison/browser";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import { useEffect, useState } from "react";
 
 export type ContactFormProps = SliceComponentProps<Content.ContactFormSlice>;
 
 const ContactForm = ({ slice }: ContactFormProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const botpoison = new Botpoison({
+    publicKey: "pk_0842adcf-4510-42f2-9282-0006505747ff",
+  });
+
+  useEffect(() => {
+    Botpoison.init();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
+    e.preventDefault();
+    // 3. Process a challenge
+    const { solution } = await botpoison.challenge();
+
+    try {
+      await fetch("https://submit-form.com/RO6EAz3lb", {
+        method: "POST",
+        headers: {
+          _botpoison: solution,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section
       className={mergeClassNames(
@@ -28,9 +61,9 @@ const ContactForm = ({ slice }: ContactFormProps) => {
         <CustomPrismicRichText field={slice.primary.description} />
 
         <form
-          action="https://submit-form.com/RO6EAz3lb"
+          onSubmit={handleSubmit}
           acceptCharset="UTF-8"
-          encType="multipart/form-data"
+          data-botpoison-public-key="pk_0842adcf-4510-42f2-9282-0006505747ff"
           method="POST"
           className="py-10 flex flex-col gap-6"
         >
@@ -70,6 +103,7 @@ const ContactForm = ({ slice }: ContactFormProps) => {
             type="submit"
             trailingIcon="arrow"
             className="w-min"
+            disabled={isLoading}
             trailingIconDirection={IconRotate.South}
           >
             Submit
