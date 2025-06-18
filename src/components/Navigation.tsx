@@ -12,6 +12,8 @@ import { usePathname, useRouter } from "next/navigation";
 
 import type { NavigationDocument } from "../../prismicio-types";
 import { PrismicNextLink } from "@prismicio/next";
+import Icon from "./atoms/Icon/Icon";
+import { IconSize } from "./atoms/Icon/Icon.types";
 
 interface NavigationProps {
   navigation: NavigationDocument;
@@ -135,8 +137,7 @@ export const Navigation = ({
             className={mergeClassNames(
               "flex items-center gap-6",
               "desktop-s:fixed desktop-s:top-24 desktop-s:left-0 desktop-s:w-full desktop-s:h-dvh desktop-s:backdrop-blur-xl",
-              "desktop-s:bg-lake-lime-600 desktop-s:justify-center desktop-s:gap-10 desktop-s:p-4",
-              "desktop-s:rounded-3xl",
+              "desktop-s:bg-lake-lime-600 desktop-s:justify-center desktop-s:gap-10 desktop-s:p-4 desktop-s:rounded-3xl desktop-s:overflow-y-scroll",
               isOpen ? "desktop-s:flex-col" : "desktop-s:hidden",
             )}
           >
@@ -151,7 +152,10 @@ export const Navigation = ({
                 >
                   <LinkElement
                     field={slice.primary.link}
-                    className="text-[18px] text-[inherit] desktop-s:text-heading-2-xl"
+                    className={mergeClassNames(
+                      "text-[18px] text-[inherit] desktop-s:text-heading-2-xl",
+                      !isFilled.link(slice.primary.link) && "desktop-s:hidden",
+                    )}
                     onClick={(event: MouseEvent) =>
                       handleClick(event, slice.primary.link)
                     }
@@ -163,15 +167,16 @@ export const Navigation = ({
                   {slice.items.length > 0 && (
                     <div
                       className={mergeClassNames(
-                        "gap-12 items-center hidden absolute top-full pt-2 left-0 w-36 text-left flex-col",
-                        "group-hover:flex desktop-s:flex hover:flex desktop-s:pt-0",
+                        "gap-12 items-center hidden absolute top-full pt-2 -left-2 w-40 text-left flex-col",
+                        "hover:flex group-hover:flex",
+                        "desktop-s:flex desktop-s:static desktop-s:pt-0",
                       )}
                     >
                       <ul
                         className={mergeClassNames(
-                          "flex flex-col gap-12 w-full",
+                          "flex flex-col gap-3 w-full",
                           "bg-off-white-600 px-4 py-2 rounded-lg",
-                          "desktop-s:bg-lake-lime-600 desktop-s:px-0 desktop-s:py-0",
+                          "desktop-s:bg-lake-lime-600 desktop-s:px-0 desktop-s:py-0 desktop-s:gap-10",
                         )}
                       >
                         {slice.items.map((item) => {
@@ -185,9 +190,13 @@ export const Navigation = ({
                                 onClick={(event: MouseEvent) =>
                                   handleClick(event, item.child_link)
                                 }
-                                className="text-[18px] text-[inherit] w-full"
+                                className="text-[18px] text-[inherit] w-full flex gap-3 items-center desktop-s:text-heading-2-xl desktop-s:justify-center"
                               >
                                 <span>{item.child_link.text}</span>
+
+                                {item.child_link.link_type !== "Document" && (
+                                  <Icon name="arrow" size={IconSize.XSmall} />
+                                )}
                               </LinkElement>
                             </li>
                           );
