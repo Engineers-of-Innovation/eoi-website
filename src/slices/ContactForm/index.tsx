@@ -1,6 +1,8 @@
 "use client";
 
 import { Button } from "@/components/atoms/Button";
+import HCaptcha from "@/components/atoms/HCaptcha/HCaptcha";
+import HoneypotField from "@/components/atoms/HoneypotField/HoneypotField";
 import Icon from "@/components/atoms/Icon/Icon";
 import { IconRotate } from "@/components/atoms/Icon/Icon.types";
 import Input from "@/components/atoms/Input/Input";
@@ -9,7 +11,6 @@ import CustomPrismicRichText from "@/components/molecules/CustomPrismicRichText"
 import { mergeClassNames } from "@/utils/helpers/mergeClassNames";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import Script from "next/script";
 
 export type ContactFormProps = SliceComponentProps<Content.ContactFormSlice>;
 
@@ -23,7 +24,6 @@ const ContactForm = ({ slice }: ContactFormProps) => {
         "tablet-s:flex-col tablet-s:px-4",
       )}
     >
-      <Script src="https://unpkg.com/@botpoison/browser" async />
       <div
         className={mergeClassNames(
           "bg-off-white-100 rounded-[40px] border-b-[10px] border-b-lake-lime-50 px-20 tablet-s:px-6 py-16 max-w-[774px] w-full",
@@ -33,11 +33,12 @@ const ContactForm = ({ slice }: ContactFormProps) => {
 
         <form
           acceptCharset="UTF-8"
-          data-botpoison-public-key="pk_0842adcf-4510-42f2-9282-0006505747ff"
           method="POST"
           action="https://submit-form.com/RO6EAz3lb"
           className="py-10 flex flex-col gap-6"
         >
+          <HoneypotField />
+
           <div className="flex flex-col gap-2">
             <Input
               id="name"
@@ -68,6 +69,8 @@ const ContactForm = ({ slice }: ContactFormProps) => {
               label="Your message"
             />
           </div>
+
+          <HCaptcha />
 
           <Button
             variant="primary"

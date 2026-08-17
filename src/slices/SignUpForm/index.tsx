@@ -1,15 +1,18 @@
+"use client";
+
+import { Button } from "@/components/atoms/Button";
+import Checkbox from "@/components/atoms/Checkbox/Checkbox";
+import HCaptcha from "@/components/atoms/HCaptcha/HCaptcha";
+import HoneypotField from "@/components/atoms/HoneypotField/HoneypotField";
+import Icon from "@/components/atoms/Icon/Icon";
+import { IconRotate } from "@/components/atoms/Icon/Icon.types";
+import Input from "@/components/atoms/Input/Input";
+import Select from "@/components/atoms/Select/Select";
+import TextArea from "@/components/atoms/Textarea/Textarea";
+import CustomPrismicRichText from "@/components/molecules/CustomPrismicRichText";
+import { mergeClassNames } from "@/utils/helpers/mergeClassNames";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { mergeClassNames } from "@/utils/helpers/mergeClassNames";
-import CustomPrismicRichText from "@/components/molecules/CustomPrismicRichText";
-import Input from "@/components/atoms/Input/Input";
-import Checkbox from "@/components/atoms/Checkbox/Checkbox";
-import TextArea from "@/components/atoms/Textarea/Textarea";
-import { Button } from "@/components/atoms/Button";
-import { IconRotate } from "@/components/atoms/Icon/Icon.types";
-import Icon from "@/components/atoms/Icon/Icon";
-import Select from "@/components/atoms/Select/Select";
-import Script from "next/script";
 
 export type SignUpFormProps = SliceComponentProps<Content.SignUpFormSlice>;
 
@@ -23,7 +26,6 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
         "tablet-s:flex-col tablet-s:px-4",
       )}
     >
-      <Script src="https://unpkg.com/@botpoison/browser" async />
       <div
         className={mergeClassNames(
           "bg-off-white-100 rounded-[40px] border-b-[10px] border-b-lake-lime-50 px-20 py-16 max-w-[798px] w-full tablet-s:px-6",
@@ -34,10 +36,11 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
         <form
           acceptCharset="UTF-8"
           action="https://submit-form.com/jHi4TGLGi"
-          data-botpoison-public-key="pk_0842adcf-4510-42f2-9282-0006505747ff"
           method="POST"
           className="py-10 flex flex-col gap-6"
         >
+          <HoneypotField />
+
           <h4 className="text-heading-l mb-2">Join us</h4>
 
           <div className="flex gap-4 tablet-l:flex-col">
@@ -54,7 +57,7 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               name="lastname"
               required
               placeholder="Your last name"
-              label="Lastname"
+              label="Last name"
             />
           </div>
 
@@ -75,7 +78,7 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               required
               name="reason"
               isFullWidth
-              placeholder="Why do you want to join us?"
+              placeholder="Tell us about your reason for wanting to join us"
               label="Why do you want to join us?"
             />
           </div>
@@ -209,6 +212,8 @@ const SignUpForm = ({ slice }: SignUpFormProps) => {
               />
             </div>
           </div>
+
+          <HCaptcha />
 
           <Button
             variant="primary"
