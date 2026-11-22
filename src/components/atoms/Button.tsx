@@ -30,7 +30,11 @@ interface IBaseButtonProps extends PropsWithChildren {
 export type ButtonProps = IBaseButtonProps &
   ButtonHTMLAttributes<HTMLButtonElement> & { field?: never };
 
-type LinkButtonProps = IBaseButtonProps & { field: PrismicLinkProps["field"] };
+type LinkButtonProps = IBaseButtonProps & {
+  field: PrismicLinkProps["field"];
+  target?: string;
+  rel?: string;
+};
 
 export const Button = ({
   children,

@@ -1,0 +1,52 @@
+{
+  "id": "jobs_section",
+  "type": "SharedSlice",
+  "name": "JobsSection",
+  "description": "Teaser of the latest job openings at our sponsors, linking to the job openings page",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "e.g. Job openings at our sponsors"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "max_items": {
+          "type": "Number",
+          "config": {
+            "label": "Max. number of openings",
+            "placeholder": "Defaults to 3"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "Link to the job openings page",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

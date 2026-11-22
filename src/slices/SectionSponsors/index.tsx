@@ -1,7 +1,7 @@
-import { type Content, isFilled } from "@prismicio/client";
-import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
-import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import { mergeClassNames } from "@/utils/helpers/mergeClassNames";
+import { type Content, isFilled } from "@prismicio/client";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
 
 export type CustomerLogosProps =
   SliceComponentProps<Content.CustomerLogosSlice>;

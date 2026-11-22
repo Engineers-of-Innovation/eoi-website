@@ -1,0 +1,95 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"visible": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"company_name": {
+				"__TYPE__": "FieldContent",
+				"value": "tape",
+				"type": "Text"
+			},
+			"company_logo": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+					"width": 4752,
+					"height": 3168
+				},
+				"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+				"width": 4752,
+				"height": 3168,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "left",
+				"thumbnails": {}
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "slowly",
+				"type": "Text"
+			},
+			"location": {
+				"__TYPE__": "FieldContent",
+				"value": "pack",
+				"type": "Text"
+			},
+			"employment_type": {
+				"__TYPE__": "FieldContent",
+				"value": "double",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sunt anim veniam incididunt dolor aliquip consectetur dolor ad tempor adipisicing mollit."
+						}
+					}
+				]
+			},
+			"linkedin": {
+				"__TYPE__": "LinkContent",
+				"key": "b67deed3-9966-4297-ae99-3683194bb11d",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			},
+			"company_website": {
+				"__TYPE__": "LinkContent",
+				"key": "e2af4530-bcac-47d8-97e0-774d237f9355",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io"
+				}
+			},
+			"apply_link": {
+				"__TYPE__": "LinkContent",
+				"key": "00d2ca93-c4a0-4788-9fa5-ef1414755765",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io"
+				}
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

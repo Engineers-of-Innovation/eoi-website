@@ -1,0 +1,109 @@
+{
+  "id": "job_opening",
+  "type": "SharedSlice",
+  "name": "JobOpening",
+  "description": "A job opening at one of our sponsoring companies",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "visible": {
+          "type": "Boolean",
+          "config": {
+            "label": "Visible",
+            "default_value": true,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "is_new": {
+          "type": "Boolean",
+          "config": {
+            "label": "New",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "company_name": {
+          "type": "Text",
+          "config": {
+            "label": "Company name",
+            "placeholder": "Name of the sponsoring company"
+          }
+        },
+        "company_logo": {
+          "type": "Image",
+          "config": {
+            "label": "Company logo",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Job title",
+            "placeholder": "e.g. Mechanical Engineer"
+          }
+        },
+        "location": {
+          "type": "Text",
+          "config": {
+            "label": "Location",
+            "placeholder": "e.g. Amsterdam, The Netherlands"
+          }
+        },
+        "employment_type": {
+          "type": "Text",
+          "config": {
+            "label": "Employment type",
+            "placeholder": "e.g. Full-time, Internship, Graduation project"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Short job description",
+            "placeholder": "Keep it short: what will the person do?",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,list-item"
+          }
+        },
+        "linkedin": {
+          "type": "Link",
+          "config": {
+            "label": "LinkedIn",
+            "placeholder": "Link to the company or the vacancy on LinkedIn",
+            "select": null,
+            "allowTargetBlank": true
+          }
+        },
+        "company_website": {
+          "type": "Link",
+          "config": {
+            "label": "Company website",
+            "placeholder": "Link to the company website",
+            "select": null,
+            "allowTargetBlank": true
+          }
+        },
+        "apply_link": {
+          "type": "Link",
+          "config": {
+            "label": "Apply link",
+            "placeholder": "Link to the application page or a mailto: address",
+            "select": null,
+            "allowTargetBlank": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

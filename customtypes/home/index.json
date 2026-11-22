@@ -26,6 +26,9 @@
             "events_section": {
               "type": "SharedSlice"
             },
+            "jobs_section": {
+              "type": "SharedSlice"
+            },
             "section_scroll_text": {
               "type": "SharedSlice"
             },

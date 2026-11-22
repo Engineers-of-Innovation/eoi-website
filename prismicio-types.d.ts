@@ -253,6 +253,7 @@ type HomeDocumentDataSlicesSlice =
   | SectionShareSlice
   | SectionAboutSlice
   | EventsSectionSlice
+  | JobsSectionSlice
   | SectionScrollTextSlice
   | CustomerLogosSlice
   | SectionHeroSlice;
@@ -315,6 +316,73 @@ interface HomeDocumentData {
  */
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+
+type JobOpeningsDocumentDataSlicesSlice =
+  | SinglePageHeaderSlice
+  | JobOpeningSlice;
+
+/**
+ * Content for Job openings documents
+ */
+interface JobOpeningsDocumentData {
+  /**
+   * Slice Zone field in *Job openings*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job_openings.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<JobOpeningsDocumentDataSlicesSlice> /**
+   * Meta Title field in *Job openings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: job_openings.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Job openings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: job_openings.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Job openings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job_openings.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Job openings document from Prismic
+ *
+ * - **API ID**: `job_openings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type JobOpeningsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<JobOpeningsDocumentData>,
+    "job_openings",
+    Lang
+  >;
 
 type JoinUsDocumentDataSlicesSlice =
   | SignUpFormSlice
@@ -499,6 +567,7 @@ export type AllDocumentTypes =
   | EventsDocument
   | FooterDocument
   | HomeDocument
+  | JobOpeningsDocument
   | JoinUsDocument
   | NavigationDocument;
 
@@ -940,6 +1009,246 @@ type EventsSectionSliceVariation = EventsSectionSliceDefault;
 export type EventsSectionSlice = prismic.SharedSlice<
   "events_section",
   EventsSectionSliceVariation
+>;
+
+/**
+ * Primary content in *JobOpening → Default → Primary*
+ */
+export interface JobOpeningSliceDefaultPrimary {
+  /**
+   * Visible field in *JobOpening → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: job_opening.default.primary.visible
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  visible: prismic.BooleanField;
+
+  /**
+   * New field in *JobOpening → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: job_opening.default.primary.is_new
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_new: prismic.BooleanField;
+
+  /**
+   * Company name field in *JobOpening → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Name of the sponsoring company
+   * - **API ID Path**: job_opening.default.primary.company_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  company_name: prismic.KeyTextField;
+
+  /**
+   * Company logo field in *JobOpening → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job_opening.default.primary.company_logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  company_logo: prismic.ImageField<never>;
+
+  /**
+   * Job title field in *JobOpening → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Mechanical Engineer
+   * - **API ID Path**: job_opening.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Location field in *JobOpening → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Amsterdam, The Netherlands
+   * - **API ID Path**: job_opening.default.primary.location
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * Employment type field in *JobOpening → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Full-time, Internship, Graduation project
+   * - **API ID Path**: job_opening.default.primary.employment_type
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  employment_type: prismic.KeyTextField;
+
+  /**
+   * Short job description field in *JobOpening → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Keep it short: what will the person do?
+   * - **API ID Path**: job_opening.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * LinkedIn field in *JobOpening → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link to the company or the vacancy on LinkedIn
+   * - **API ID Path**: job_opening.default.primary.linkedin
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  linkedin: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Company website field in *JobOpening → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link to the company website
+   * - **API ID Path**: job_opening.default.primary.company_website
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  company_website: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Apply link field in *JobOpening → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link to the application page or a mailto: address
+   * - **API ID Path**: job_opening.default.primary.apply_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  apply_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Default variation for JobOpening Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type JobOpeningSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<JobOpeningSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *JobOpening*
+ */
+type JobOpeningSliceVariation = JobOpeningSliceDefault;
+
+/**
+ * JobOpening Shared Slice
+ *
+ * - **API ID**: `job_opening`
+ * - **Description**: A job opening at one of our sponsoring companies
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type JobOpeningSlice = prismic.SharedSlice<
+  "job_opening",
+  JobOpeningSliceVariation
+>;
+
+/**
+ * Primary content in *JobsSection → Default → Primary*
+ */
+export interface JobsSectionSliceDefaultPrimary {
+  /**
+   * Title field in *JobsSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Job openings at our sponsors
+   * - **API ID Path**: jobs_section.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *JobsSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: jobs_section.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Max. number of openings field in *JobsSection → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: Defaults to 3
+   * - **API ID Path**: jobs_section.default.primary.max_items
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  max_items: prismic.NumberField;
+
+  /**
+   * Button field in *JobsSection → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link to the job openings page
+   * - **API ID Path**: jobs_section.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for JobsSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type JobsSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<JobsSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *JobsSection*
+ */
+type JobsSectionSliceVariation = JobsSectionSliceDefault;
+
+/**
+ * JobsSection Shared Slice
+ *
+ * - **API ID**: `jobs_section`
+ * - **Description**: Teaser of the latest job openings at our sponsors, linking to the job openings page
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type JobsSectionSlice = prismic.SharedSlice<
+  "jobs_section",
+  JobsSectionSliceVariation
 >;
 
 /**
@@ -1622,6 +1931,9 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      JobOpeningsDocument,
+      JobOpeningsDocumentData,
+      JobOpeningsDocumentDataSlicesSlice,
       JoinUsDocument,
       JoinUsDocumentData,
       JoinUsDocumentDataSlicesSlice,
@@ -1652,6 +1964,14 @@ declare module "@prismicio/client" {
       EventsSectionSliceDefaultPrimary,
       EventsSectionSliceVariation,
       EventsSectionSliceDefault,
+      JobOpeningSlice,
+      JobOpeningSliceDefaultPrimary,
+      JobOpeningSliceVariation,
+      JobOpeningSliceDefault,
+      JobsSectionSlice,
+      JobsSectionSliceDefaultPrimary,
+      JobsSectionSliceVariation,
+      JobsSectionSliceDefault,
       NavigationSlice,
       NavigationSliceDefaultPrimary,
       NavigationSliceDefaultItem,
